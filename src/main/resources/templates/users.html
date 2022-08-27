@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en" xmlns:th="http://thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div>
+  <button><a th:href="@{'/users/new'}">Ajoute new user</a></button>
+</div>
+<div th:if="${message}">
+[[${message}]]
+</div>
+<table>
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>mail</th>
+      <th>nom</th>
+    </tr>
+  </thead>
+  <tbody>
+  <th:block th:each="user : ${listUsers}">
+      <tr>
+        <td>[[${user.id}]]</td>
+        <td>[[${user.email}]]</td>
+        <td>[[${user.firstName}]]</td>
+        <td>
+          <a th:href="@{'/users/edit/'+ ${user.id}}">Edit</a>
+          <a th:href="@{'/users/delete/'+ ${user.id}}">Delete</a>
+        </td>
+      </tr>
+  </th:block>
+  </tbody>
+</table>
+
+</body>
+</html>
